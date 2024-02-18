@@ -1,0 +1,15 @@
+<% if user_signed_in? && @tasks.present? %>
+<h1 class="text-center">All Tasks</h1>
+<% @tasks.each do|task| %>
+<div class="card mb-2 mt-3">
+  <h5 class="card-header">Featured</h5>
+  <div class="card-body">
+    <h5 class="card-title"><%= task.title %></h5>
+    <p class="card-text"><%= truncate(task.desc, length:50) %></p>
+    <%= link_to 'View Task',task_path(task),class:"btn btn-outline-info"%>
+  </div>
+</div>
+<% end %>
+<% else %>
+<%= render 'welcome'%>
+<% end %>

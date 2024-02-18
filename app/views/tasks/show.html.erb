@@ -1,0 +1,27 @@
+<div class="card text-center mt-5">
+  <div class="card-header">
+    <%= current_user.email%>
+  </div>
+  <div class="card-body">
+    <% if @task.completed? %>
+    <h5 class="card-title"><strike><%= @task.title %></strike></h5>
+    <% else %>
+    <h5 class="card-title"><%= @task.title %> </h5>
+    <% end %>
+    <p class="card-text"><%= @task.desc %></p>
+    <%= link_to 'Edit', edit_task_path(@task),class:"btn btn-outline-success" %>
+    <% if @task.completed? %>
+    <%= link_to 'Delete',@task,data: {turbo_method: 'delete', turbo_confirm: "Are you sure"},class:"btn btn-outline-danger fa fa-trash fa-solid"%>
+    <% else %>
+    <%= link_to " completed",complete_task_path(@task), data: {turbo_method: 'patch' },class:"fa-sharp fa-solid fa-check btn btn-outline-primary btn-lg "%>
+    <% end %>
+  </div>
+  <div class="card-footer text-body-secondary">
+     <% if @task.completed? %>
+    Completed at <%= time_ago_in_words(@task.completed_at)%>
+    <% else %>
+    Created at <%= time_ago_in_words(@task.created_at)%>
+    <% end %>
+    
+  </div>
+</div>

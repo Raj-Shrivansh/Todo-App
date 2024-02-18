@@ -1,0 +1,47 @@
+<h2>Sign up</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),html: {"class": 'mt-5'}) do |f| %>
+  <h2 class="text-center">Sign Up</h2>
+  <div class='row mb-3'>
+    <%= f.label :"Email :",class:"col-sm-2 col-form-label"%>
+    <div class="col-sm-10">
+    <%= f.email_field :email,class:"form-control",required:true,plaeholder:"Example@abc.com"%>
+    <% if resource.errors.any? %>
+      <% resource.errors.full_messages_for(:email).each do |err| %>
+      <p style="font-size:1rem;color:red"><%= err %></p>
+      <% break %>
+      <% end %>
+    <% end %>
+  </div>
+  </div>
+  <div class='row mb-3'>
+    <%= f.label :"Password :",class:"col-sm-2 col-form-label"%>
+    <div class="col-sm-10">
+    <%= f.password_field :password,class:"form-control",required:true%>
+    <% if resource.errors.any? %>
+      <% resource.errors.full_messages_for(:password).each do |err| %>
+      <p style="font-size:1rem;color:red"><%= err %></p>
+      <% break %>
+      <% end %>
+    <% end %>
+  </div>
+  </div>
+  <div class='row mb-3'>
+    <%= f.label :"Confirm Password:",class:"col-sm-2 col-form-label pt-0"%>
+    <div class="col-sm-10">
+    <%= f.password_field :password_confirmation,class:"form-control",required:true%>
+    <% if resource.errors.any? %>
+      <% resource.errors.full_messages_for(:password_confirmation).each do |err| %>
+      <p style="font-size:1rem;color:red"><%= err %></p>
+      <% break %>
+      <% end %>
+    <% end %>
+  </div>
+  </div>
+  <div class="d-grid gap-2 col-6 mx-auto">
+  <%= f.button :submit, "Sign up" ,class:"btn btn-primary"%>
+  </div>
+    <%= render "devise/shared/links" %>
+<% end %>
+
+

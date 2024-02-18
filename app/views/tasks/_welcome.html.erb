@@ -1,0 +1,11 @@
+<div class="p-5 mb-4 bg-body-tertiary rounded-3 mt-5">
+      <div class="container-fluid py-1">
+        <h1 class="display-5 fw-bold">Welcome to ToDo List App</h1>
+        <p class="col-md-8 fs-4">In the fast-paced modern world, managing personal and professional responsibilities can be overwhelming. Todo apps offer a solution by enabling users to capture and organize their tasks in a user-friendly environment. These apps vary in complexity, from simple checklists to sophisticated project management tools, but all share the common goal of assisting users in staying organized and focused.</p>
+        <% if user_signed_in? %>
+        <%= link_to 'Add Task', new_task_path, class: "btn btn-primary btn-lg" %>
+        <% else %>
+        <%= link_to 'Join Now', new_user_registration_path, class: "btn btn-primary btn-lg" %>
+        <% end %>
+      </div>
+    </div>
